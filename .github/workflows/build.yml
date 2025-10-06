@@ -1,0 +1,28 @@
+﻿name: Build Dotnet Project
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: CheckOut
+        uses: actions/checkoutv4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore Dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build WarningUnlock/WarningUnlock.csproj
+      - name: Publish
+        run: dotnet publish WarningUnlock/WarningUnlock.csproj -c Release -r win-x64 -o ./publish
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: WarningUnlock
+          path: './publish'
