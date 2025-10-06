@@ -21,8 +21,14 @@ jobs:
         run: dotnet build WarningUnlock/WarningUnlock.csproj
       - name: Publish
         run: dotnet publish WarningUnlock/WarningUnlock.csproj -c Release -r win-x64 -o ./publish
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4.6.0
+      - name: Create Release and Upload Release Asset
+        uses: softprops/action-gh-release@v1
         with:
-          name: WarningUnlock
-          path: './publish'
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: TODO New Release.
+          draft: false
+          prerelease: false
+          files: |
+            ./publish/WarningUnlock.exe
+            LICENSE 
