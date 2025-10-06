@@ -20,13 +20,11 @@ jobs:
         run: dotnet build WarningUnlock/WarningUnlock.csproj
       - name: Publish
         run: dotnet publish WarningUnlock/WarningUnlock.csproj -c Release -r win-x64 -o ./publish
-      - name: Create Release and Upload Release Asset
+      - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          name: Release ${{ github.ref }}
-          body: TODO New Release.
-          draft: false
-          prerelease: false
-          files: |
-            ./publish/WarningUnlock.exe
+          files: publish/*.exe
+          draft: true
+          fail_on_unmatched_files: true
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
