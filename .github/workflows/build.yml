@@ -26,5 +26,5 @@ jobs:
           files: publish/*.exe
           draft: true
           fail_on_unmatched_files: true
-          env:
+        env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
