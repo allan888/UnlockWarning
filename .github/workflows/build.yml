@@ -1,9 +1,8 @@
 ﻿name: Build Dotnet Project
 on:
   push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+    tags:
+      - 'v*'   # 例如推送 v1.0.0 时触发
 
 jobs:
   build:
@@ -31,4 +30,3 @@ jobs:
           prerelease: false
           files: |
             ./publish/WarningUnlock.exe
-            LICENSE 
