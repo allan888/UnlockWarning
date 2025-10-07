@@ -23,6 +23,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
+          body_path: CHANGELOG.md
           files: publish/WarningUnlock.exe
           draft: true
           fail_on_unmatched_files: true
