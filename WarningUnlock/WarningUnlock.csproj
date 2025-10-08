@@ -9,4 +9,9 @@
         <ApplicationIcon>icon.ico</ApplicationIcon>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="icon.ico" />
+      <Resource Include="icon.ico" />
+    </ItemGroup>
+
 </Project>
