@@ -37,7 +37,6 @@ partial class Form1
         AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
-        Icon = ((System.Drawing.Icon)resources.GetObject("$this.Icon"));
         Text = "CJY安全卫士";
         ResumeLayout(false);
     }
