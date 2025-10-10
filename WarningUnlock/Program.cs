@@ -20,12 +20,7 @@ static class Program
             {
                 if (args[0] == "-S")
                 {
-                    sha SHA = new sha(args[1]);
-                    string result = SHA.GetFileSHA256();
-                    if (result!=null)
-                    {
-                        MessageBox.Show(result, "SHA256结果");
-                    }
+                    Application.Run(new sha_256(args[1]));
                 }
             }
         }
