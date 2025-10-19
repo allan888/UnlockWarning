@@ -1,4 +1,6 @@
+using System;
 using System.Security.Principal;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace WarningUnlock;
