@@ -17,14 +17,14 @@ jobs:
       - name: Restore Dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build WarningUnlock/WarningUnlock.csproj
+        run: dotnet build UnlockWarning.csproj
       - name: Publish
-        run: dotnet publish WarningUnlock/WarningUnlock.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=false -o ./publish --self-contained true
+        run: dotnet publish UnlockWarning.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=false -o ./publish --self-contained true
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           body_path: CHANGELOG.md
-          files: publish/WarningUnlock.exe
+          files: publish/UnlockWarning.exe
           draft: false
           fail_on_unmatched_files: true
         env:
