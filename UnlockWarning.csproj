@@ -9,7 +9,6 @@
         <UseWindowsForms>true</UseWindowsForms>
         <ApplicationIcon>icon.ico</ApplicationIcon>
         <PlatformTarget>x86</PlatformTarget>
-        <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>CrawlingCrab.snk</AssemblyOriginatorKeyFile>
         <PublicSign>true</PublicSign>
     </PropertyGroup>
