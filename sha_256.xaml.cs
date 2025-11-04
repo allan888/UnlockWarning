@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
-
+using MessageBox = System.Windows.MessageBox;
 namespace UnlockWarning;
 
 public partial class sha_256 : Window

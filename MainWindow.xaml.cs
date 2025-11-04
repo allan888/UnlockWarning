@@ -1,93 +1,48 @@
-﻿using System.Drawing;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
-using Microsoft.Win32;
-using OpenCvSharp;
-using OpenCvSharp.WpfExtensions;
-using Window = System.Windows.Window;
+using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using MessageBox = System.Windows.Forms.MessageBox;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace UnlockWarning;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow : Window
 {
-    private VideoCapture capture;
-    private Thread cameraThread;
-    private bool isRunning = false;
-    static bool isLocked = false;
-    static Timer lockTimer;
-    private static bool shouldTakePhotos = false;
+    
     public MainWindow()
     {
         InitializeComponent();
-        // 注册锁屏事件
-        SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+        
     }
-    private static void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
-    {
-        if (e.Reason == SessionSwitchReason.SessionLock)
-        {
-            isLocked = true;
+    
+    
 
-            // 启动1分钟计时器
-            lockTimer = new System.Threading.Timer(
-                new TimerCallback(OnLockTimerElapsed),
-                null,
-                20000,
-                Timeout.Infinite
-            );
-        }
-        else if (e.Reason == SessionSwitchReason.SessionUnlock)
+    
+    private void Show(object sender, EventArgs e)
+    {
+        this.Visibility = System.Windows.Visibility.Visible;
+        this.ShowInTaskbar = true;
+        this.Activate();
+    }
+    
+    private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ChangedButton == MouseButton.Left)
         {
-            isLocked = false;
-            lockTimer?.Dispose();
+            this.DragMove();
         }
     }
-    private void Button_Click(object sender, RoutedEventArgs e)
+
+    private void Minimize_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!isRunning)
-        {
-            capture = new VideoCapture(0); // 0 表示默认摄像头
-            cameraThread = new Thread(new ThreadStart(CaptureCameraCallback));
-            cameraThread.Start();
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-            cameraThread?.Join();
-            capture?.Release();
-        }    
+        this.WindowState = WindowState.Minimized;
     }
-    private static void OnLockTimerElapsed(object state)
+
+    private void Close_OnClick(object sender, RoutedEventArgs e)
     {
-        if (isLocked)
-        {
-            shouldTakePhotos = true;
-        }
-    }
-    private void CaptureCameraCallback()
-    {
-        Mat frame = new Mat();
-        while (isRunning)
-        {
-            capture.Read(frame);
-            if (!frame.Empty())
-            {
-                var imageSource = BitmapSourceConverter.ToBitmapSource(frame);
-                imageSource.Freeze();
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    pictureBox1.Source = imageSource;
-                }));
-                if (shouldTakePhotos)
-                {
-                    string filename = $"capture_{DateTime.Now:yyyyMMdd_HHmmss}.jpg";
-                    Cv2.ImWrite(filename, frame);
-                    shouldTakePhotos = false;
-                }
-            }
-        }
+        this.Hide();
     }
 }
