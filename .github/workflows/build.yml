@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: dotnet build UnlockWarning.csproj
       - name: Publish
-        run: dotnet publish UnlockWarning.csproj -c Release -r win-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=false -o ./publish --self-contained true
+        run: dotnet publish UnlockWarning.csproj -c Release -r win-x86 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=false -o ./publish --self-contained true
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
