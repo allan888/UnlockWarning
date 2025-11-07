@@ -2,7 +2,9 @@
 using System.ServiceProcess;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using Application = System.Windows.Application;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace UnlockWarning;
@@ -26,9 +28,10 @@ public partial class AskForPassword : Window
     public AskForPassword()
     {
         InitializeComponent();
+        this.Topmost = true;
     }
 
-    private void button1_Click(object sender, RoutedEventArgs e)
+    private void Check_Password()
     {
         string getPassword = textBox1.Text;
         string md5_password = GetMd5_16(GetMd5_16(getPassword) + "qnmdzhr");
@@ -41,6 +44,18 @@ public partial class AskForPassword : Window
         else
         {
             MessageBox.Show("密码错了，哈哈");
+        }
+    }
+    private void button1_Click(object sender, RoutedEventArgs e)
+    {
+        Check_Password();
+    }
+
+    private void EnterKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            Check_Password();
         }
     }
 }

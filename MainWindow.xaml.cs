@@ -1,26 +1,31 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.Forms.MessageBox;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using UserControl = System.Windows.Forms.UserControl;
 
 namespace UnlockWarning;
 
 public partial class MainWindow : Window
 {
-    
+    private Camera _camera = new Camera();
     public MainWindow()
     {
         InitializeComponent();
-        
+        RightPanel.Loaded += (s, e) =>
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                Console.WriteLine($"Grid大小: {RightPanel.ActualWidth} x {RightPanel.ActualHeight}");
+            }), System.Windows.Threading.DispatcherPriority.Render);
+        };
     }
-    
-    
-
-    
     private void Show(object sender, EventArgs e)
     {
         this.Visibility = System.Windows.Visibility.Visible;
@@ -44,5 +49,24 @@ public partial class MainWindow : Window
     private void Close_OnClick(object sender, RoutedEventArgs e)
     {
         this.Hide();
+    }
+    
+    private void Camera_OnClick(object sender, RoutedEventArgs e)
+    {
+        ContentControl1.Content = null;
+        ContentControl1.Content = new Frame()
+        {
+            Content = _camera
+        };
+    }
+
+    private void Notice_OnClick(object sender, RoutedEventArgs e)
+    {
+        ContentControl1.Content = null;
+    }
+
+    private void License_Click(object sender, RoutedEventArgs e)
+    {
+        ContentControl1.Content = null;
     }
 }
