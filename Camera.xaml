@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:UnlockWarning"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d"
       Title="Camera" Height="716" Width="1106">
     <Grid>
@@ -11,14 +12,16 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="130"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image x:Name="Picture"
+        <Image x:Name="CameraPicture"
                Height="500"
-               HorizontalAlignment="Left"
+               HorizontalAlignment="Center"
                VerticalAlignment="Center"
                Margin="0,0,0,0"
                Stretch="Uniform"/>
-        <Border Grid.Column="1" CornerRadius="30" Background="#7163ba" Margin="20">
-            
+        <Border Grid.Column="1" CornerRadius="30" Background="#C7EDCC" Margin="20">
+            <Button Style="{StaticResource MenuButton}" Click="Button_Click">
+                <iconPacks:PackIconMaterial Kind="Camera" Style="{StaticResource MenuButtonIcon}"/>
+            </Button>
         </Border>
         
     </Grid>
