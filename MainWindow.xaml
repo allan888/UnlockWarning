@@ -24,27 +24,27 @@
                 <Border CornerRadius="30" Background="#7163ba" Margin="20">
                     <Grid>
                         <StackPanel VerticalAlignment="Center">
-                            <Button Style="{StaticResource MenuButton}" Click="Camera_OnClick">
+                            <Button Style="{StaticResource MenuButton}" Click="Camera_OnClick" ToolTip="摄像头">
                                 <Icon:PackIconMaterial Kind="Camera" Style="{StaticResource MenuButtonIcon}"/>
                             </Button>
                             <Separator Background="#877cc5" Margin="20 0 20 10" Height="0.8"></Separator>
-                            <Button Style="{StaticResource MenuButton}" Click="Sha256String_OnClick">
+                            <Button Style="{StaticResource MenuButton}" Click="Sha256String_OnClick" ToolTip="SHA256">
                                 <Icon:PackIconMaterial Kind="Fingerprint" Style="{StaticResource MenuButtonIcon}"/>
                             </Button>
                             <Separator Background="#877cc5" Margin="20 0 20 10" Height="0.8"></Separator>
-                            <Button Style="{StaticResource MenuButton}" Click="Notice_OnClick">
+                            <Button Style="{StaticResource MenuButton}" Click="Notice_OnClick" ToolTip="通知">
                                 <Icon:PackIconMaterial Kind="BellCheckOutline" Style="{StaticResource MenuButtonIcon}"/>
                             </Button>
                             <Separator Background="#877cc5" Margin="20 0 20 10" Height="0.8"></Separator>
-                            <Button Style="{StaticResource MenuButton}" Click="License_Click">
+                            <Button Style="{StaticResource MenuButton}" Click="License_Click" ToolTip="许可证">
                                 <Icon:PackIconPhosphorIcons Kind="IdentificationCardLight" Style="{StaticResource MenuButtonIcon2}"/>
                             </Button>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom">
-                            <Button Style="{StaticResource MenuButton}" Click="Minimize_OnClick">
+                            <Button Style="{StaticResource MenuButton}" Click="Minimize_OnClick" ToolTip="最小化">
                                 <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource MenuButtonIconMinimize}"/>
                             </Button>
-                            <Button Style="{StaticResource MenuButton}" Click="Close_OnClick">
+                            <Button Style="{StaticResource MenuButton}" Click="Close_OnClick" ToolTip="退出">
                                 <Icon:PackIconMaterial Kind="LocationExit" Style="{StaticResource MenuButtonIconExit}"/>
                             </Button>
                         </StackPanel>

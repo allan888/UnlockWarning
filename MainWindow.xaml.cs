@@ -16,6 +16,7 @@ public partial class MainWindow : Window
 {
     private Camera _camera = new Camera();
     private Sha256StringPage _sha256StringPage = new Sha256StringPage();
+    private License _license = new License();
     public MainWindow()
     {
         InitializeComponent();
@@ -78,5 +79,9 @@ public partial class MainWindow : Window
     private void License_Click(object sender, RoutedEventArgs e)
     {
         ContentControl1.Content = null;
+        ContentControl1.Content = new Frame()
+        {
+            Content = _license
+        };
     }
 }

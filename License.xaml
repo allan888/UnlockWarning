@@ -7,6 +7,108 @@
       mc:Ignorable="d"
       Title="License" Height="716" Width="1106">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+            <TextBlock Text="机器码" FontSize="16" Foreground="#333" Margin="0,0,0,10"/>
+            <Grid Margin="0,0,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="MachineCodeTextBox" Grid.Column="0" Height="36" FontSize="13"
+                         IsReadOnly="True" BorderBrush="#7163ba" BorderThickness="1.5"
+                         Background="#fafafa" FontFamily="Consolas" Padding="8,6"/>
+                <Button Grid.Column="2" Content="复制" Height="36" FontSize="13"
+                        Background="#7163ba" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="CopyMachineCode_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5a5080"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Border Background="#f5f5f5" CornerRadius="10" Padding="12" Margin="0,0,0,15">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="状态：" FontSize="14" Foreground="#555"/>
+                        <TextBlock x:Name="StatusLabel" Text="未激活" FontSize="14" Foreground="#d9534f"
+                                   FontWeight="Bold" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="有效期至：" FontSize="14" Foreground="#555"/>
+                        <TextBlock x:Name="ExpiryLabel" Text="—" FontSize="14" Foreground="#333" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="序列号" FontSize="16" Foreground="#333" Margin="0,0,0,10"/>
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SerialTextBox" Grid.Column="0" Height="36" FontSize="14"
+                         Padding="8,6" BorderBrush="#7163ba" BorderThickness="1.5"
+                         Background="#fafafa"/>
+                <Button Grid.Column="2" Content="激活" Height="36" FontSize="13"
+                        Background="#7163ba" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="ActivateButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#5a5080"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Button Content="导入 .lic 文件" Height="40" FontSize="14"
+                    Background="#7163ba" Foreground="White" BorderThickness="0"
+                    Cursor="Hand" Click="ImportFile_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#5a5080"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <TextBlock x:Name="MessageLabel" Text="" FontSize="13" Foreground="#d9534f"
+                       Margin="0,5,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
     </Grid>
 </Page>
