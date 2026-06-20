@@ -28,6 +28,10 @@
                                 <Icon:PackIconMaterial Kind="Camera" Style="{StaticResource MenuButtonIcon}"/>
                             </Button>
                             <Separator Background="#877cc5" Margin="20 0 20 10" Height="0.8"></Separator>
+                            <Button Style="{StaticResource MenuButton}" Click="Sha256String_OnClick">
+                                <Icon:PackIconMaterial Kind="Fingerprint" Style="{StaticResource MenuButtonIcon}"/>
+                            </Button>
+                            <Separator Background="#877cc5" Margin="20 0 20 10" Height="0.8"></Separator>
                             <Button Style="{StaticResource MenuButton}" Click="Notice_OnClick">
                                 <Icon:PackIconMaterial Kind="BellCheckOutline" Style="{StaticResource MenuButtonIcon}"/>
                             </Button>

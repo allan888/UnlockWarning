@@ -18,7 +18,7 @@ public partial class Camera : Page
     public Camera()
     {
         InitializeComponent();
-        SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+        // SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
     }
     private static void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
     {
@@ -43,7 +43,7 @@ public partial class Camera : Page
     {
         if (!isRunning)
         {
-            capture = new VideoCapture(1); // 0 表示默认摄像头
+            capture = new VideoCapture(0); // 0 表示默认摄像头
             if (!capture.IsOpened())
             {
                 MessageBox.Show("无法打开摄像头！");

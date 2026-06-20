@@ -15,6 +15,7 @@ namespace UnlockWarning;
 public partial class MainWindow : Window
 {
     private Camera _camera = new Camera();
+    private Sha256StringPage _sha256StringPage = new Sha256StringPage();
     public MainWindow()
     {
         InitializeComponent();
@@ -57,6 +58,15 @@ public partial class MainWindow : Window
         ContentControl1.Content = new Frame()
         {
             Content = _camera
+        };
+    }
+
+    private void Sha256String_OnClick(object sender, RoutedEventArgs e)
+    {
+        ContentControl1.Content = null;
+        ContentControl1.Content = new Frame()
+        {
+            Content = _sha256StringPage
         };
     }
 
