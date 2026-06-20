@@ -55,18 +55,25 @@
             </Border>
 
             <TextBlock Text="序列号" FontSize="16" Foreground="#333" Margin="0,0,0,10"/>
-            <Grid Margin="0,0,0,10">
+            <TextBox x:Name="SerialTextBox" Height="36" FontSize="14" Padding="8,6"
+                     BorderBrush="#7163ba" BorderThickness="1.5" Background="#fafafa"
+                     TextChanged="SerialTextBox_TextChanged" Margin="0,0,0,10"/>
+            <TextBlock x:Name="SerialStatusLabel" Text="" FontSize="12"
+                       Margin="0,0,0,15" Foreground="#aaa"/>
+
+            <TextBlock Text="许可证文件 (.lic)" FontSize="16" Foreground="#333" Margin="0,0,0,10"/>
+            <Grid Margin="0,0,0,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="120"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="SerialTextBox" Grid.Column="0" Height="36" FontSize="14"
-                         Padding="8,6" BorderBrush="#7163ba" BorderThickness="1.5"
-                         Background="#fafafa"/>
-                <Button Grid.Column="2" Content="激活" Height="36" FontSize="13"
+                <TextBox x:Name="LicPathTextBox" Grid.Column="0" Height="36" FontSize="12"
+                         IsReadOnly="True" BorderBrush="#7163ba" BorderThickness="1.5"
+                         Background="#fafafa" Padding="8,6" VerticalContentAlignment="Center"/>
+                <Button Grid.Column="2" Content="选择文件" Height="36" FontSize="13"
                         Background="#7163ba" Foreground="White" BorderThickness="0"
-                        Cursor="Hand" Click="ActivateButton_Click">
+                        Cursor="Hand" Click="ImportFile_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="10">
@@ -85,10 +92,12 @@
                     </Button.Style>
                 </Button>
             </Grid>
+            <TextBlock x:Name="LicStatusLabel" Text="" FontSize="12"
+                       Margin="0,0,0,15" Foreground="#aaa"/>
 
-            <Button Content="导入 .lic 文件" Height="40" FontSize="14"
+            <Button x:Name="ActivateButton" Content="激活" Height="40" FontSize="14"
                     Background="#7163ba" Foreground="White" BorderThickness="0"
-                    Cursor="Hand" Click="ImportFile_Click">
+                    Cursor="Hand" Click="ActivateButton_Click" IsEnabled="False">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="10">
@@ -102,13 +111,16 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#5a5080"/>
                             </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#bbb"/>
+                            </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
             </Button>
 
             <TextBlock x:Name="MessageLabel" Text="" FontSize="13" Foreground="#d9534f"
-                       Margin="0,5,0,0" TextWrapping="Wrap"/>
+                       Margin="0,10,0,0" TextWrapping="Wrap"/>
         </StackPanel>
     </Grid>
 </Page>
